@@ -1,7 +1,10 @@
 // get the element 
 
 // element --- property
-var num1 = parseInt(document.getElementById('n1').textContent); 
+const sE = document.getElementById('num1');
+var num1 = parseInt(sE.textContext);
+var num2 = parseInt(document.getElementById('num2').textContent); 
+console.log("I get num1 " + num1 + " I get num 2 " + num2);
 
 
 
