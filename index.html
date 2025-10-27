@@ -385,7 +385,7 @@ ss
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id="dieimage" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -406,6 +406,27 @@ ss
                     <td id="r6"></td>
                 </tr>
             </table>
+
+            <script>
+                const myarray = [2,4,6,8,3,7];
+                myarray.forEach(element => console.log(element));
+                for (var i in myarray){
+                    console.log(myarray[1])
+                }
+                myarray.push(100);
+                myarray[10000] = 10;
+                var stats = [0,0,0,0,0,0];
+                const rolldice = () => {
+                    var num = Math.floor(Math.random()*6 + 1);
+                    console.log(num);
+                    const imgE = document.getElementById('dieimage');
+                    imgE.setAttribute('src',"img/die"+num+".png");
+                    stats[1]++; //if num is 2 then the index will be 1
+                    //table update
+                    var newid = "r"+num;
+                };
+                document.getElementById('roll').addEventListener('click',rolldice,false);
+            </script>
 
         </div>
 
@@ -428,7 +449,9 @@ ss
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 			<script>
-				
+				var index = 3;
+                var imagelist = document.querySelectorAll('.image-container-hide');
+                imagelist[3].setAttribute('class',"image-container");
 			</script>
 
 
