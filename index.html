@@ -93,7 +93,12 @@ ss
             <p id="p3"> Paragraph Number three </p>
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
-
+                <script>
+                    const pE = document.querySelector('#p1');
+                    pE.innerHTML = "<b> I CHANGED </b>";
+                    console.log(pE);
+                    document.getElementById("p2").textContent="<i>great</i>";
+                </script>
 
         </div>
 
@@ -102,8 +107,12 @@ ss
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                    const fE = document.getElementsByName("addnum1")[0];
+                    var a = parseInt(fE.value);
+                    const sE = document.getElementsByName("num2")[0];
+                    var b = parseInt(sE.value);
+                    var c = a + b;
+                    document.getElementByID('result').innerHTML = c;
                 }
             </script>
             <p> <input type="text" name="addnum1" /> + <input type="text" name="num2">
@@ -125,7 +134,16 @@ ss
                 <p id="message">
 
                 </p>
+                <script>
+                    function welcome(){
+                        //alert("boogie woogie woogie, YOU DID IT");
+                        var name = document.getElementById('cName').value;
+                        document.getElementById('welcome').innerHTML= "welcome";
+                    }
 
+                    const nameE = document.querySelector("#cName");
+                    nameE.addEventListener('blur',welcome,false);
+                </script>
                 <p>
                     <label> Email:
                         <input type="text" id="cEmail">
@@ -138,9 +156,18 @@ ss
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
+            
             <input type="text" id="squarenum" placeholder="Type in a number"> <sup> 2 </sup> =
             <label id="squareresult"> ? </label>
-
+            <script>
+                function square(){
+                    var a = document.getElementById("squarenum").value;
+                    var b = a * a;
+                    document.getElementById('squareresult').innerHTML = "<b>" + b + "</b>"
+                }
+                document.getElementById('squarenum').addEventListener('blur',square);
+                
+            </script>
         </div>
 
         <div class="practice">
@@ -178,9 +205,29 @@ ss
             </p>
 
             <script type="text/javascript">
-
-
-
+                //event handler
+                function condition_change() {
+                    var year = document.getElementById('year').value;
+                    var condition = document.getElementById('condition').value;
+                    console.log("year: " + year + "| condition " + condition);
+                    if (year === "2004" && condition === "Fair"){
+                        alert("The price is 1500");
+                    }
+                    else if (year === "2003" && condition === "Fair"){
+                        alert("The price is 1000");
+                    }
+                    else if (year === "2004" && condition === "Good"){
+                        alert("The price is 2500");
+                    }
+                    else if (year === "2003" && condition === "Good"){
+                        alert("The price is 2000");
+                    }
+                }
+                //register the event
+                const yearE = document.getElementById('year');
+                yearE.addEventListener('change', condition_change, false);
+                const conditionE = document.getElementById('condition');
+                conditionE.addEventListener('change', condition_change, false);
             </script>
 
         </div>
@@ -190,7 +237,30 @@ ss
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                function changetheme() {
+                    var choice = document.getElementById('theme').value;
+                    var bcolor = "white";
+                    switch (choice) {
+                        case "cool":
+                            bcolor = "lightblue";
+                            break;
+                        case "warm":
+                            bcolor = "orange";
+                            break;
+                        case "hot":
+                            bcolor = "red";
+                            break;
+                        default:
+                            bcolor = "black";
+                            break;
+                    }
+                    console.log("The color id " + bcolor);
+                    document.body.style.backgroundColor=bcolor;
+                }
 
+                document.getElementById('theme').addEventListener('blur',changetheme,false);
+            </script>
         </div>
 
 
@@ -214,12 +284,40 @@ ss
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" id="checkpremium" value="Check Premium">
             </p>
             <p id="premiumresult">
 
             </p>
+            <script>
+                function getpremium() {
+                    var index = document.getElementById('agegroup').selectedIndex;
+                    var coverage = document.querySelector('input[name="coverage"]:checked').value;
+                    console.log("index " + index + " coverage " + coverage);
+                    var base = 10;
+                    var agefactor = 0;
+                    switch (index) {
+                        case 0:
+                            agefactor = 0.08
+                            break;
+                        case 1:
+                            agefactor = 0.09;
+                            break;
+                        case 2:
+                            agefactor = 0.11;
+                            break;
+                        case 3:
+                            agefactor = 0.17;
+                            break;
+                        default:
+                            break;
 
+                    }
+                    var premium = base + agefactor * (parseInt(coverage)/ 1000);
+                    document.getElementById('premiumresult').innerHTML = "Your premium cost is $" + premium.toFixed(2);
+                }
+                document.getElementById('checkpremium').addEventListener('click',getpremium,false);
+            </script>
         </div>
 
 
@@ -232,7 +330,20 @@ ss
             <p>
                 <input type="button" value="Click for Square">
             </p>
-
+            <p id="loopoutput"></p>
+            <script>
+                function getSquare() {
+                    var N = document.getElementById('inputnumber1').value;
+                    console.log("N = " + N + "type" + typeof N);
+                    var output = "";
+                    for(var i=1; i<= N; i++) {
+                        var square = i * i;
+                        output += "The square of " + i + " is " + square + "<br>";
+                    }
+                    document.getElementById('loopoutput').innerHTML = output;
+                }
+                document.querySelector('input[value="Click for Square"]').addEventListener('click', getSquare,false);
+            </script>
         </div>
 
 
