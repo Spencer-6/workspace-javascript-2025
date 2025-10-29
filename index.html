@@ -451,7 +451,11 @@ ss
 			<script>
 				var index = 3;
                 var imagelist = document.querySelectorAll('.image-container-hide');
-                imagelist[3].setAttribute('class',"image-container");
+                imagelist[0].setAttribute('class',"image-container");
+                function changepic(){
+                    imagelist[index].setAttribute('class', "img-container-hide");
+                    
+                }
 			</script>
 
 
